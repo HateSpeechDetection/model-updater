@@ -84,15 +84,21 @@ class ModelUpdater:
             return True  # Assume update is needed if no local version exists
         return github_version > local_version
 
-    def update_model(self):
-        """Check for updates and download the model if a newer version is available."""
+    def update_model(self, force=False):
+        """
+        Check for updates and download the model if a newer version is available, or if force=True.
+        
+        Args:
+            force (bool): If True, force the update even if the local version is up to date.
+        """
         local_version = self.get_local_version()
         github_version = self.get_github_version()
 
         if github_version:
-            if self.is_newer_version_available(local_version, github_version):
+            if force or self.is_newer_version_available(local_version, github_version):
                 logger.info(
-                    f"New model version ({github_version}) available. Updating..."
+                    f"Updating model{' (forced)' if force else ''}. "
+                    f"New version: {github_version}"
                 )
                 self.download_file(self.model_url, self.model_file)
                 self.download_file(self.version_url, self.version_file)
@@ -102,6 +108,4 @@ class ModelUpdater:
             else:
                 logger.info("Local model is up to date.")
         else:
-            logger.error(
-                "Could not determine the latest model version. Update aborted."
-            )
+            logger.error("Could not determine the latest model version. Update aborted.")
