@@ -6,13 +6,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="model_updater",  # The name of your package on PyPI
-    version="0.1.0",  # Semantic versioning
-    description="A package for updating HaSpDe machine learning models from remote sources.",
+    version="0.2.0",  # Updated semantic versioning to reflect the new force option feature
+    description="A package for updating machine learning models from remote sources, with force update option.",
     long_description=long_description,  # Use the README as the long description
     long_description_content_type="text/markdown",  # Specify that long description is in Markdown
     author="Verso Vuorenmaa",
     author_email="verso@luova.club",
-    url="https://github.com/HateSpeechDetection/model-updater",  # Corrected the GitHub URL
+    url="https://github.com/HateSpeechDetection/model-updater",  # GitHub URL
     project_urls={  # Additional useful URLs for the project
         "Documentation": "https://github.com/HateSpeechDetection/model-updater/wiki",
         "Bug Tracker": "https://github.com/HateSpeechDetection/model-updater/issues",
@@ -20,7 +20,7 @@ setup(
     },
     packages=find_packages(),  # Automatically discover all packages
     install_requires=[
-        "requests>=2.20.0",  # Pin version to ensure compatibility
+        "requests>=2.20.0",  # Ensure compatibility with requests library
     ],
     python_requires=">=3.6",  # Specify compatible Python versions
     classifiers=[  # Additional classifiers to better categorize the project
@@ -34,8 +34,9 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Operating System :: OS Independent",
     ],
-    keywords="model updater machine learning automation",  # Keywords to help discover your package
+    keywords="model updater machine learning automation force-update",  # Updated keywords
     license="MIT",  # License type
 )
